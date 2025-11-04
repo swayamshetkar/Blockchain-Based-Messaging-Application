@@ -74,25 +74,23 @@ Even if one server goes offline, the blockchain continues through other nodes.
 <br><br>
 
 -->> **Blockchain Lifecycle**
-
 <br>
-1.Sender → Deliver: Sends metadata + encrypted payload.
+1.Sender → Deliver: Sends metadata + encrypted payload. <br>
 
-2.Relayers → Store: Message replicated on 3 relayers.
+2.Relayers → Store: Message replicated on 3 relayers. <br>
+ 
+3.Proposer → Block: Every 20s, a node proposes new block with pending message CIDs. <br>
 
-3.Proposer → Block: Every 20s, a node proposes new block with pending message CIDs.
+4.Peers → Vote: Peers verify (Merkle, signature, hash continuity) and vote. <br>
 
-4.Peers → Vote: Peers verify (Merkle, signature, hash continuity) and vote.
+5.Commit → Consensus: When majority agrees, block is committed. <br>
 
-5.Commit → Consensus: When majority agrees, block is committed.
-
-6.Ledger → Immutable: Messages marked committed=1 in DB, forming a permanent chain.
-
+6.Ledger → Immutable: Messages marked committed=1 in DB, forming a permanent chain. <br>
+<br>
 
 
 -->> **Example Database Schema**
 <br>
-
 1.For messages
 
 | Field      | Type    | Description                      |
@@ -241,13 +239,13 @@ keys/user_nacl_private.key — NaCl key (for encryption)
 
 
 -->> **Future Roadmap**
-1.Phase 1	Peer Auto-Discovery	Dynamic /api/register_peer, /api/peers, /api/ping endpoints
-2.Phase 2	Fork Resolution	Automatic rollback on conflicting blocks
-3.Phase 3	Block Sync	Nodes fetch missing blocks on reconnect
-4.Phase 4	Smart Contract Integration	Immutable on-chain message proofs
-5.Phase 5	Incentivization Layer	Tokenized miner rewards for relayers
-6.Phase 6	Network Visualization	Dashboard for live block + peer view
-7.Phase 7	AI Integration	Optional NLP chat agent or analytics
+1.Phase 1	Peer Auto-Discovery	Dynamic /api/register_peer, /api/peers, /api/ping endpoints.
+2.Phase 2	Fork Resolution	Automatic rollback on conflicting block.
+3.Phase 3	Block Sync	Nodes fetch missing blocks on reconnect.
+4.Phase 4	Smart Contract Integration	Immutable on-chain message proofs.
+5.Phase 5	Incentivization Layer	Tokenized miner rewards for relayers.
+6.Phase 6	Network Visualization	Dashboard for live block + peer view.
+7.Phase 7	AI Integration	Optional NLP chat agent or analytics.
 
 <br><br>
 
