@@ -4,9 +4,9 @@ A fully distributed, blockchain-based end-to-end encrypted messaging framework
 built with Python, FastAPI, and NaCl crypto — enabling privacy-first, trustless communication.
 
 
-
+<br><br>
 --> **Overview**
-
+<br>
 
 BlockMessage is a peer-to-peer blockchain network that lets users exchange encrypted messages while maintaining a verifiable, tamper-proof ledger of communication events.
 
@@ -29,7 +29,7 @@ This means every message is:
 Even if one server goes offline, the blockchain continues through other nodes.
 
 
-
+<br><br>
 -->> **Architecture**
 
 
@@ -40,12 +40,12 @@ Even if one server goes offline, the blockchain continues through other nodes.
 | **Relayer Layer**    | Nodes store messages and replicate across the network            | `main.py`, `storage.py`, `relayer.py`                   |
 | **Blockchain Layer** | Blocks proposals, Merkle trees, consensus, commit tracking       | `blockchain.py`, `main.py`                              |
 | **Networking Layer** | Peer discovery, replication, and communication                   | `network.py`, `peer_init.py`                            |
-
+<br><br>
 
 
 -->> **Security Model**
 
-
+<br>
 | Feature                    | Description                                                                      |
 | -------------------------- | -------------------------------------------------------------------------------- |
 | **End-to-End Encryption**  | Messages are encrypted with the recipient’s NaCl public key                      |
@@ -56,11 +56,11 @@ Even if one server goes offline, the blockchain continues through other nodes.
 | **Consensus**              | Simple majority vote (≥ 51%) ensures block acceptance                            |
 | **Replication**            | Each message replicated to 3 random online peers for redundancy                  |
 
-
+<br><br>
 
 -->> **Peer Discovery & Network Design**
 
-
+<br>
  Peers self-discover dynamically:
 
  1. A new node registers itself with a bootstrap node (/api/register_peer).
@@ -73,11 +73,11 @@ Even if one server goes offline, the blockchain continues through other nodes.
 
     If one node (like your server) shuts down, others continue the blockchain independently.
 
-
+<br><br>
 
 -->> **Blockchain Lifecycle**
 
-
+<br>
 1.Sender → Deliver: Sends metadata + encrypted payload.
 
 2.Relayers → Store: Message replicated on 3 relayers.
@@ -93,11 +93,11 @@ Even if one server goes offline, the blockchain continues through other nodes.
 
 
 -->> **Example Database Schema**
-
+<br><br>
 
 1.For messages
 
-
+<br>
 | Field      | Type    | Description                      |
 | ---------- | ------- | -------------------------------- |
 | id         | INTEGER | Autoincrement primary key        |
@@ -109,11 +109,11 @@ Even if one server goes offline, the blockchain continues through other nodes.
 | root_id    | TEXT    | Deterministic hash for chat pair |
 | session_id | TEXT    | Time-windowed hash for session   |
 | committed  | INTEGER | 0 or 1                           |
-
+<br><br>
 
 
 2. For Blocks
-
+<br>
 
 | Field         | Type    | Description                       |
 | ------------- | ------- | --------------------------------- |
@@ -125,11 +125,11 @@ Even if one server goes offline, the blockchain continues through other nodes.
 | signature     | TEXT    | Signature of proposer             |
 | timestamp     | INTEGER | Block timestamp                   |
 
-
+<br><br>
 
 -->> **Key Concepts**
 
-
+<br>
 | Concept         | Explanation                                                         |
 | --------------- | ------------------------------------------------------------------- |
 | **Relayer**     | A node that stores encrypted messages and participates in consensus |
@@ -143,7 +143,7 @@ Even if one server goes offline, the blockchain continues through other nodes.
 
 
 -->> **Security**
-
+<br><br>
 
 1. All messages encrypted before upload
 2. CIDs verified during replication
@@ -155,7 +155,7 @@ Even if one server goes offline, the blockchain continues through other nodes.
 
 
 -->> Tech Stack
-
+<br><br>
 
 | Component     | Library / Tech                             |
 | ------------- | ------------------------------------------ |
@@ -175,10 +175,10 @@ Authors
 
 
 -->> **Setting Up a Node**
-
+<br><br>
 Each node (your computer or another server) acts as a relayer + blockchain validator.
 
-
+<br>
 1️⃣ Clone the repository
     git clone https://github.com/swayamshetkar/Blockchain-Based-Messaging-Application/
     cd Blockchain-Based-Messaging-Application
@@ -186,21 +186,21 @@ Each node (your computer or another server) acts as a relayer + blockchain valid
 
 2️⃣ Run migration
     python migrate.py
-
+<br>
 
 This ensures your database schema is up-to-date.
 
-
+<br>
 3️⃣ Start the relayer node
     uvicorn main:app --host 0.0.0.0 --port 3000 --reload
-
+<br>
 
 ..To run multiple relayers:
 
 uvicorn main:app --port 3001
 uvicorn main:app --port 3002
 
-
+<br>
 4️⃣ Register peers (self-discovery)
 
    Each node announces itself:
@@ -210,24 +210,24 @@ uvicorn main:app --port 3002
 
 The bootstrap node (your main server) automatically adds new peers to its database, which then gossip the new peer across the network.
 
-
+<br>
 5️⃣ Register a user
 
   Run once per user:
 
   python register_user.py
 
-
+<br>
 This generates:
 
 keys/user_eth_private.key — Ethereum private key (for signing)
 
 keys/user_nacl_private.key — NaCl key (for encryption)
-
+<br>
 
 6️⃣ Send a message
    python sender.py
-
+<br>
   Lists available registered users
 
   Prompts you to pick a recipient
@@ -238,11 +238,11 @@ keys/user_nacl_private.key — NaCl key (for encryption)
 
   Delivers metadata for blockchain inclusion
 
-
+<br>
 7️⃣ Receive messages (realtime)
     python receiver_realtime.py
 
-
+<br>
    This opens a WebSocket connection and prints decrypted messages as they arrive, including:
 
    Message text
@@ -256,15 +256,14 @@ keys/user_nacl_private.key — NaCl key (for encryption)
 
 
 -->> **Future Roadmap**
-
-
-   1.Phase 1	Peer Auto-Discovery	Dynamic /api/register_peer, /api/peers, /api/ping endpoints
-   2.Phase 2	Fork Resolution	Automatic rollback on conflicting blocks
-   3.Phase 3	Block Sync	Nodes fetch missing blocks on reconnect
-   4.Phase 4	Smart Contract Integration	Immutable on-chain message proofs
-   5.Phase 5	Incentivization Layer	Tokenized miner rewards for relayers
-   6.Phase 6	Network Visualization	Dashboard for live block + peer view
-   7.Phase 7	AI Integration	Optional NLP chat agent or analytics
+<br><br>
+1.Phase 1	Peer Auto-Discovery	Dynamic /api/register_peer, /api/peers, /api/ping endpoints
+2.Phase 2	Fork Resolution	Automatic rollback on conflicting blocks
+3.Phase 3	Block Sync	Nodes fetch missing blocks on reconnect
+4.Phase 4	Smart Contract Integration	Immutable on-chain message proofs
+5.Phase 5	Incentivization Layer	Tokenized miner rewards for relayers
+6.Phase 6	Network Visualization	Dashboard for live block + peer view
+7.Phase 7	AI Integration	Optional NLP chat agent or analytics
 
 
 
