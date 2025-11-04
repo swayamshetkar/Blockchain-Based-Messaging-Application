@@ -90,7 +90,7 @@ Even if one server goes offline, the blockchain continues through other nodes.
 <br><br>
 
 -->> **Example Database Schema**
-<br>
+<br> <br>
 1.For messages
 
 | Field      | Type    | Description                      |
