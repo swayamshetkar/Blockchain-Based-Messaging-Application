@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+httpx
+python-dotenv
+eth-account
+pynacl
+requests
+websockets
