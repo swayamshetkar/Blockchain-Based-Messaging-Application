@@ -45,7 +45,6 @@ Even if one server goes offline, the blockchain continues through other nodes.
 
 -->> **Security Model**
 
-<br>
 | Feature                    | Description                                                                      |
 | -------------------------- | -------------------------------------------------------------------------------- |
 | **End-to-End Encryption**  | Messages are encrypted with the recipient’s NaCl public key                      |
@@ -60,7 +59,6 @@ Even if one server goes offline, the blockchain continues through other nodes.
 
 -->> **Peer Discovery & Network Design**
 
-<br>
  Peers self-discover dynamically:
 
  1. A new node registers itself with a bootstrap node (/api/register_peer).
@@ -93,11 +91,10 @@ Even if one server goes offline, the blockchain continues through other nodes.
 
 
 -->> **Example Database Schema**
-<br><br>
+<br>
 
 1.For messages
 
-<br>
 | Field      | Type    | Description                      |
 | ---------- | ------- | -------------------------------- |
 | id         | INTEGER | Autoincrement primary key        |
@@ -109,11 +106,9 @@ Even if one server goes offline, the blockchain continues through other nodes.
 | root_id    | TEXT    | Deterministic hash for chat pair |
 | session_id | TEXT    | Time-windowed hash for session   |
 | committed  | INTEGER | 0 or 1                           |
+
 <br><br>
-
-
 2. For Blocks
-<br>
 
 | Field         | Type    | Description                       |
 | ------------- | ------- | --------------------------------- |
@@ -128,8 +123,6 @@ Even if one server goes offline, the blockchain continues through other nodes.
 <br><br>
 
 -->> **Key Concepts**
-
-<br>
 | Concept         | Explanation                                                         |
 | --------------- | ------------------------------------------------------------------- |
 | **Relayer**     | A node that stores encrypted messages and participates in consensus |
@@ -140,11 +133,9 @@ Even if one server goes offline, the blockchain continues through other nodes.
 | **Consensus**   | Simple majority agreement for new blocks                            |
 | **ACK**         | Signature-based message delivery confirmation                       |
 
-
-
--->> **Security**
 <br><br>
 
+-->> **Security**
 1. All messages encrypted before upload
 2. CIDs verified during replication
 3. Blocks verified by all peers
@@ -152,10 +143,8 @@ Even if one server goes offline, the blockchain continues through other nodes.
 5. No global mutable state (each task has its own DB connection)
 6. WAL-enabled SQLite for concurrency
 
-
-
--->> Tech Stack
 <br><br>
+-->> Tech Stack
 
 | Component     | Library / Tech                             |
 | ------------- | ------------------------------------------ |
@@ -167,96 +156,91 @@ Even if one server goes offline, the blockchain continues through other nodes.
 | Storage       | **Local JSON / Redundant Relayer Storage** |
 
 
-
+<br><br>
 Authors
 
  **Swayam Shetkar** — *Developer, Architect, Cybersecurity , AI & Blockchain Enthusiast*
 
 
-
--->> **Setting Up a Node**
 <br><br>
+-->> **Setting Up a Node**
+
 Each node (your computer or another server) acts as a relayer + blockchain validator.
 
 <br>
-1️⃣ Clone the repository
-    git clone https://github.com/swayamshetkar/Blockchain-Based-Messaging-Application/
+1️⃣ Clone the repository <br>
+    git clone https://github.com/swayamshetkar/Blockchain-Based-Messaging-Application/   <br>
     cd Blockchain-Based-Messaging-Application
 
-
-2️⃣ Run migration
+<br><br>
+2️⃣ Run migration  <br>
     python migrate.py
 <br>
 
 This ensures your database schema is up-to-date.
 
-<br>
-3️⃣ Start the relayer node
-    uvicorn main:app --host 0.0.0.0 --port 3000 --reload
-<br>
+<br><br>
+3️⃣ Start the relayer node  <br>
+    uvicorn main:app --host 0.0.0.0 --port 3000 --reload  <br>
 
-..To run multiple relayers:
+..To run multiple relayers:  <br>
 
-uvicorn main:app --port 3001
+uvicorn main:app --port 3001  <br>
 uvicorn main:app --port 3002
 
-<br>
-4️⃣ Register peers (self-discovery)
-
-   Each node announces itself:
+<br><br>
+4️⃣ Register peers (self-discovery)  <br>
+ 
+   Each node announces itself:  <br>
 
    python peer_init.py
 
-
+<br><br>
 The bootstrap node (your main server) automatically adds new peers to its database, which then gossip the new peer across the network.
 
 <br>
-5️⃣ Register a user
+5️⃣ Register a user  <br>
 
-  Run once per user:
+  Run once per user: <br>
 
-  python register_user.py
-
-<br>
+  python register_user.py  <br>
 This generates:
-
-keys/user_eth_private.key — Ethereum private key (for signing)
-
-keys/user_nacl_private.key — NaCl key (for encryption)
 <br>
+keys/user_eth_private.key — Ethereum private key (for signing)
+<br>
+keys/user_nacl_private.key — NaCl key (for encryption)
+<br><br>
 
 6️⃣ Send a message
-   python sender.py
+   python sender.py <br>
+   Lists available registered users
 <br>
-  Lists available registered users
+   Prompts you to pick a recipient<br>
 
-  Prompts you to pick a recipient
+  Encrypts + signs + sends message     <br>
 
-  Encrypts + signs + sends message
+  Uploads encrypted payload to relayers       <br>
 
-  Uploads encrypted payload to relayers
+  Delivers metadata for blockchain inclusion   <br>
 
-  Delivers metadata for blockchain inclusion
-
-<br>
-7️⃣ Receive messages (realtime)
+<br><br>
+7️⃣ Receive messages (realtime)   <br>
     python receiver_realtime.py
 
 <br>
-   This opens a WebSocket connection and prints decrypted messages as they arrive, including:
+   This opens a WebSocket connection and prints decrypted messages as they arrive, including:   <br>
 
-   Message text
+   Message text   <br>
 
-   Sender address
+   Sender address    <br>
 
-   Session & conversation IDs
+   Session & conversation IDs    <br>
 
    Message acknowledgment (ACK) confirmations
-
+<br><br>
 
 
 -->> **Future Roadmap**
-<br><br>
 1.Phase 1	Peer Auto-Discovery	Dynamic /api/register_peer, /api/peers, /api/ping endpoints
 2.Phase 2	Fork Resolution	Automatic rollback on conflicting blocks
 3.Phase 3	Block Sync	Nodes fetch missing blocks on reconnect
@@ -265,7 +249,7 @@ keys/user_nacl_private.key — NaCl key (for encryption)
 6.Phase 6	Network Visualization	Dashboard for live block + peer view
 7.Phase 7	AI Integration	Optional NLP chat agent or analytics
 
-
+<br><br>
 
 -->> Authors
 
