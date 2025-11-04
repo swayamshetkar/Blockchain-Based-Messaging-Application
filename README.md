@@ -21,10 +21,10 @@ It combines:
 4. Peer self-discovery (automatic peer registration and gossip propagation)
 
 This means every message is:
-✅ Encrypted end-to-end
-✅ Stored redundantly across multiple relayers
-✅ Signed and timestamped immutably
-✅ Committed into blockchain blocks after consensus
+ 1.Encrypted end-to-end
+ 2.Stored redundantly across multiple relayers
+ 3.Signed and timestamped immutably
+ 4.Committed into blockchain blocks after consensus
 
 Even if one server goes offline, the blockchain continues through other nodes.
 
@@ -258,13 +258,13 @@ keys/user_nacl_private.key — NaCl key (for encryption)
 -->> **Future Roadmap**
 
 
-🟢 Phase 1	Peer Auto-Discovery	Dynamic /api/register_peer, /api/peers, /api/ping endpoints
-🟢 Phase 2	Fork Resolution	Automatic rollback on conflicting blocks
-🟢 Phase 3	Block Sync	Nodes fetch missing blocks on reconnect
-🟡 Phase 4	Smart Contract Integration	Immutable on-chain message proofs
-🟡 Phase 5	Incentivization Layer	Tokenized miner rewards for relayers
-🔵 Phase 6	Network Visualization	Dashboard for live block + peer view
-🔵 Phase 7	AI Integration	Optional NLP chat agent or analytics
+   1.Phase 1	Peer Auto-Discovery	Dynamic /api/register_peer, /api/peers, /api/ping endpoints
+   2.Phase 2	Fork Resolution	Automatic rollback on conflicting blocks
+   3.Phase 3	Block Sync	Nodes fetch missing blocks on reconnect
+   4.Phase 4	Smart Contract Integration	Immutable on-chain message proofs
+   5.Phase 5	Incentivization Layer	Tokenized miner rewards for relayers
+   6.Phase 6	Network Visualization	Dashboard for live block + peer view
+   7.Phase 7	AI Integration	Optional NLP chat agent or analytics
 
 
 
