@@ -134,12 +134,12 @@ Even if one server goes offline, the blockchain continues through other nodes.
 <br><br>
 
 -->> **Security**
-1. All messages encrypted before upload
-2. CIDs verified during replication
-3. Blocks verified by all peers
-4. WebSocket only pushes to authenticated addresses
-5. No global mutable state (each task has its own DB connection)
-6. WAL-enabled SQLite for concurrency
+  1. All messages encrypted before upload <br>
+  2. CIDs verified during replication <br>
+  3. Blocks verified by all peers <br>
+  4. WebSocket only pushes to authenticated addresses <br>
+  5. No global mutable state (each task has its own DB connection) <br>
+  6. WAL-enabled SQLite for concurrency <br>
 
 <br><br>
 -->> Tech Stack
@@ -239,13 +239,13 @@ keys/user_nacl_private.key — NaCl key (for encryption)
 
 
 -->> **Future Roadmap**
-1.Phase 1	Peer Auto-Discovery	Dynamic /api/register_peer, /api/peers, /api/ping endpoints.
-2.Phase 2	Fork Resolution	Automatic rollback on conflicting block.
-3.Phase 3	Block Sync	Nodes fetch missing blocks on reconnect.
-4.Phase 4	Smart Contract Integration	Immutable on-chain message proofs.
-5.Phase 5	Incentivization Layer	Tokenized miner rewards for relayers.
-6.Phase 6	Network Visualization	Dashboard for live block + peer view.
-7.Phase 7	AI Integration	Optional NLP chat agent or analytics.
+  1.Phase 1	Peer Auto-Discovery	Dynamic /api/register_peer, /api/peers, /api/ping endpoints. <br>
+  2.Phase 2	Fork Resolution	Automatic rollback on conflicting block. <br>
+  3.Phase 3	Block Sync	Nodes fetch missing blocks on reconnect.  <br>
+  4.Phase 4	Smart Contract Integration	Immutable on-chain message proofs. <br>
+  5.Phase 5	Incentivization Layer	Tokenized miner rewards for relayers. <br>
+  6.Phase 6	Network Visualization	Dashboard for live block + peer view. <br>
+  7.Phase 7	AI Integration	Optional NLP chat agent or analytics. 
 
 <br><br>
 
