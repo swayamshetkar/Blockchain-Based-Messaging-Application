@@ -145,12 +145,12 @@ Even if one server goes offline, the blockchain continues through other nodes.
 -->> **Security**
 
 
-✅ All messages encrypted before upload
-✅ CIDs verified during replication
-✅ Blocks verified by all peers
-✅ WebSocket only pushes to authenticated addresses
-✅ No global mutable state (each task has its own DB connection)
-✅ WAL-enabled SQLite for concurrency
+1. All messages encrypted before upload
+2. CIDs verified during replication
+3. Blocks verified by all peers
+4. WebSocket only pushes to authenticated addresses
+5. No global mutable state (each task has its own DB connection)
+6. WAL-enabled SQLite for concurrency
 
 
 
