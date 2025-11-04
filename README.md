@@ -75,19 +75,19 @@ Even if one server goes offline, the blockchain continues through other nodes.
 
 -->> **Blockchain Lifecycle**
 <br>
-1.Sender → Deliver: Sends metadata + encrypted payload. <br>
+  1.Sender → Deliver: Sends metadata + encrypted payload. <br>
 
-2.Relayers → Store: Message replicated on 3 relayers. <br>
+  2.Relayers → Store: Message replicated on 3 relayers. <br>
  
-3.Proposer → Block: Every 20s, a node proposes new block with pending message CIDs. <br>
+  3.Proposer → Block: Every 20s, a node proposes new block with pending message CIDs. <br>
 
-4.Peers → Vote: Peers verify (Merkle, signature, hash continuity) and vote. <br>
+  4.Peers → Vote: Peers verify (Merkle, signature, hash continuity) and vote. <br>
 
-5.Commit → Consensus: When majority agrees, block is committed. <br>
+  5.Commit → Consensus: When majority agrees, block is committed. <br>
 
-6.Ledger → Immutable: Messages marked committed=1 in DB, forming a permanent chain. <br>
-<br>
+  6.Ledger → Immutable: Messages marked committed=1 in DB, forming a permanent chain. 
 
+<br><br>
 
 -->> **Example Database Schema**
 <br>
