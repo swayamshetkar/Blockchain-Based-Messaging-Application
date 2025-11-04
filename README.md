@@ -75,17 +75,12 @@ Even if one server goes offline, the blockchain continues through other nodes.
 
 -->> **Blockchain Lifecycle**
 <br>
-  1.Sender → Deliver: Sends metadata + encrypted payload. <br>
-
-  2.Relayers → Store: Message replicated on 3 relayers. <br>
- 
-  3.Proposer → Block: Every 20s, a node proposes new block with pending message CIDs. <br>
-
-  4.Peers → Vote: Peers verify (Merkle, signature, hash continuity) and vote. <br>
-
-  5.Commit → Consensus: When majority agrees, block is committed. <br>
-
-  6.Ledger → Immutable: Messages marked committed=1 in DB, forming a permanent chain. 
+    1.Sender → Deliver: Sends metadata + encrypted payload. <br>
+    2.Relayers → Store: Message replicated on 3 relayers. <br>
+    3.Proposer → Block: Every 20s, a node proposes new block with pending message CIDs. <br>
+    4.Peers → Vote: Peers verify (Merkle, signature, hash continuity) and vote. <br>
+    5.Commit → Consensus: When majority agrees, block is committed. <br>
+    6.Ledger → Immutable: Messages marked committed=1 in DB, forming a permanent chain. 
 
 <br><br>
 
@@ -134,12 +129,12 @@ Even if one server goes offline, the blockchain continues through other nodes.
 <br><br>
 
 -->> **Security**
-  1. All messages encrypted before upload <br>
-  2. CIDs verified during replication <br>
-  3. Blocks verified by all peers <br>
-  4. WebSocket only pushes to authenticated addresses <br>
-  5. No global mutable state (each task has its own DB connection) <br>
-  6. WAL-enabled SQLite for concurrency <br>
+    1. All messages encrypted before upload <br>
+    2. CIDs verified during replication <br>
+    3. Blocks verified by all peers <br>
+    4. WebSocket only pushes to authenticated addresses <br>
+    5. No global mutable state (each task has its own DB connection) <br>
+    6. WAL-enabled SQLite for concurrency <br>
 
 <br><br>
 -->> Tech Stack
@@ -239,13 +234,13 @@ keys/user_nacl_private.key — NaCl key (for encryption)
 
 
 -->> **Future Roadmap**
-  1.Phase 1	Peer Auto-Discovery	Dynamic /api/register_peer, /api/peers, /api/ping endpoints. <br>
-  2.Phase 2	Fork Resolution	Automatic rollback on conflicting block. <br>
-  3.Phase 3	Block Sync	Nodes fetch missing blocks on reconnect.  <br>
-  4.Phase 4	Smart Contract Integration	Immutable on-chain message proofs. <br>
-  5.Phase 5	Incentivization Layer	Tokenized miner rewards for relayers. <br>
-  6.Phase 6	Network Visualization	Dashboard for live block + peer view. <br>
-  7.Phase 7	AI Integration	Optional NLP chat agent or analytics. 
+    Phase 1	Peer Auto-Discovery	Dynamic /api/register_peer, /api/peers, /api/ping endpoints. <br>
+    Phase 2	Fork Resolution	Automatic rollback on conflicting block. <br>
+    Phase 3	Block Sync	Nodes fetch missing blocks on reconnect.  <br>
+    Phase 4	Smart Contract Integration	Immutable on-chain message proofs. <br>
+    Phase 5	Incentivization Layer	Tokenized miner rewards for relayers. <br>
+    Phase 6	Network Visualization	Dashboard for live block + peer view. <br>
+    Phase 7	AI Integration	Optional NLP chat agent or analytics. 
 
 <br><br>
 
