@@ -140,6 +140,10 @@ Security Practices
 | Storage       | **Local JSON / Redundant Relayer Storage** |
 
 
+Authors
+
+ **Swayam Shetkar** — *Developer, Architect, Cybersecurity , AI & Blockchain Enthusiast*
+
 -->> **Setting Up a Node**
 
 Each node (your computer or another server) acts as a relayer + blockchain validator.
@@ -227,4 +231,4 @@ Phase	Feature	Description
 
 -->> Authors
 
-> **Swayam Shetkar** — *Developer, Architect, Cybersecurity , AI & Blockchain Enthusiast*  
+ **Swayam Shetkar** — *Developer, Architect, Cybersecurity , AI & Blockchain Enthusiast*
