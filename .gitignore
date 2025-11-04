@@ -26,7 +26,7 @@ dist/
 *.egg
 
 # --------------------
-# IDE / Editor files
+# IDE / Editor Files
 # --------------------
 .vscode/
 .idea/
@@ -63,11 +63,35 @@ htmlcov/
 .env.production
 secrets.json
 credentials.json
+config.json
+settings.json
 
 # --------------------
-# Jupyter / IPython
+# Blockchain / Web3 Files
 # --------------------
-.ipynb_checkpoints
+# Private keys, wallets, keystore, etc.
+*.key
+*.pem
+*.crt
+*.p12
+*.keystore
+*.wallet
+keystore/
+wallets/
+node_key.hex
+node_data/
+chain_data/
+blockchain_data/
+geth/
+chaindata/
+logs/
+*.rlp
+
+# Smart contract build artifacts
+build/contracts/
+artifacts/
+*.abi
+*.bin
 
 # --------------------
 # Databases
