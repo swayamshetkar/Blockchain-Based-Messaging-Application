@@ -40,8 +40,8 @@ Even if one server goes offline, the blockchain continues through other nodes.
 | **Relayer Layer**    | Nodes store messages and replicate across the network            | `main.py`, `storage.py`, `relayer.py`                   |
 | **Blockchain Layer** | Blocks proposals, Merkle trees, consensus, commit tracking       | `blockchain.py`, `main.py`                              |
 | **Networking Layer** | Peer discovery, replication, and communication                   | `network.py`, `peer_init.py`                            |
+
 <br><br>
-<br>
 
 -->> **Security Model**
 
